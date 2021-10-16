@@ -64,14 +64,37 @@ class War {
     this.saxonArmy.push(saxon)
   }
 
-  /*vikingAttack(){
-    let saxonArmyLength = saxonArmy.length - 1;
-    let vikingArmyLength = vikingArmy.length - 1;
-    let randomViking = Math.floor(Math.random() * vikingArmyLength);
-    if(vikingArmyLength <)
-  } 
+  vikingAttack(){
+    let idRnd = Math.floor(Math.random()*this.saxonArmy.length)
+    let rndSaxon = this.saxonArmy[idRnd]
+    let rndViking = this.vikingArmy[Math.floor(Math.random())*this.vikingArmy.length]
+
+    let msg = rndSaxon.receiveDamage(rndViking.attack())
+
+    if(rndSaxon.health <= 0){
+      this.saxonArmy.splice(idRnd, 1)
+      return msg
+    }
+
+    return msg
+  }
+
+  saxonAttack(){
+    let idRnd = Math.floor(Math.random()*this.vikingArmy.length)
+    let rndViking = this.vikingArmy[idRnd]
+    let rndSaxon = this.saxonArmy[Math.floor(Math.random()*this.saxonArmy.length)]
+
+    let msg = rndViking.receiveDamage(rndSaxon.attack())
+
+    if(rndViking.health <= 0){
+      this.vikingArmy.splice(idRnd, 1)
+      return message
+    }
+    return message
+  }
 }
-*/
+ 
+
 
 
 // The following is required to make unit tests work.
